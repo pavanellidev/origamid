@@ -1,0 +1,19 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.principal {
+  margin: 50px;
+  background-color: #ebebeb;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+h2 {
+  margin: 50px 0px 30px 10px;
+}
+
+p, a {
+  margin-left: 20px; 
+}
