@@ -5,6 +5,11 @@ body {
   color: #333;
 }
 
+#logo {
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
 .nav {
   display: flex;
   justify-content: center;
@@ -19,11 +24,6 @@ body {
   color: #111;
   font-size: 18px;
   border-radius: 4px;
-}
-
-#logo {
-  margin-top: 60px;
-  margin-bottom: 50px;
 }
 
 .main {
@@ -47,6 +47,15 @@ body {
   text-align: end;
 }
 
+.detalhe {
+  position: absolute;
+  width: 50px;
+  height: 5px;
+  background-color: #ff2c2c;
+  top: 30px;
+  right: 897px;
+}
+
 .main-txt a {
   background-color: #ff2c2c;
   text-decoration: none;
@@ -64,15 +73,6 @@ body {
 #bike-img {
   width: 30%;
   height: auto;
-}
-
-.detalhe {
-  position: absolute;
-  width: 50px;
-  height: 5px;
-  background-color: #ff2c2c;
-  top: 30px;
-  right: 897px;
 }
 
 .main2 {
