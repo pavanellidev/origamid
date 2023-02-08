@@ -19,3 +19,18 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.subtitulo {
+  font-size: 8rem;
+  line-height: 1;
+  text-transform: uppercase;
+  word-break: break-all;
+  max-width: 4ch;
+}
+
+@media (max-width: 800px) {
+  .subtitulo {
+    font-size: 3.2rem;
+    max-width: initial;
+  }
+}
