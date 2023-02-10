@@ -10,6 +10,18 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 100px;
+  position: relative;
+}
+
+.formacao-container::after {
+  content: "";
+  display: block;
+  width: 130px;
+  height: 100px;
+  background: url("../img/detalhe.svg") no-repeat center;
+  position: absolute;
+  bottom: -50px;
+  left: 20px;
 }
 
 .formacao .subtitulo {
@@ -129,5 +141,9 @@
   }
   .formacao-texto {
     font-size: 1.25rem;
+  }
+  .formacao-extra h3::before {
+    position: initial;
+    margin-bottom: 8px;
   }
 }
