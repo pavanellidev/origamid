@@ -8,7 +8,6 @@ function livro (nome, ano, autor) {
   
 }
 
-
 const livroRetorno = livro('desaparecido', 1997, 'harlan')
 
 console.log(livroRetorno);
