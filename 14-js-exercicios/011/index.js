@@ -10,7 +10,6 @@ console.log(cor, marca, portas);
 const dois = 2;
 
 function somarDois(x) {
- 
   return x + dois;
 }
 
