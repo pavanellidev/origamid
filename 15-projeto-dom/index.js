@@ -1,51 +1,73 @@
-// // Mostre no console cada parágrado do site
-// const paragrafos = document.querySelectorAll('p')
+// // Verifique a distância da primeira imagem
+// // em relação ao topo da página
+// const primeiraImg = document.querySelector('img')
+// console.log(primeiraImg.offsetTop)
 
-// paragrafos.forEach((paragrafo) => {
-//   console.log(paragrafo.innerText)
+// // Retorne a soma da largura de todas as imagens
+// const imagens = document.querySelectorAll('img')
+// let soma = 0
+
+// imagens.forEach((img) => {
+//   img.getBoundingClientRect
+//   soma = soma + img.width
 // })
 
-// // Mostre o texto dos parágrafos no console
+// console.log(soma)
 
-// // Como corrigir os erros abaixo:
+// // Verifique se os links da página possuem
+// // o mínimo recomendado para telas utilizadas
+// // com o dedo. (48px/48px de acordo com o google)
 
-// const imgs = document.querySelectorAll('img');
+// // Se o browser for menor que 720px,
+// // adicione a classe menu-mobile ao menu
+// const menuMobile = document.querySelector('.menu')
+// const small = window.matchMedia('(max-width: 720px)')
+// console.log(small)
 
-// imgs.forEach((item, index) => {
-//   console.log(item, index);
-// });
+// if (small.matches) {
+//   menuMobile.classList.add('menu-mobile')
+// } else {
+//   menuMobile.classList.remove('menu-mobile')
+// }
 
-// let i = 0;
-// imgs.forEach(() => {
-//   console.log(i++);
-// });
 
-// imgs.forEach(() => i++);
+// Quando o usuário clicar nos links internos do site,
+// adicione a classe ativo ao item clicado e remova dos
+// demais itens caso eles possuam a mesma. Previna
+// o comportamento padrão desses links
 
-// Adicione a classe ativo a todos os itens do menu
+const links = document.querySelectorAll('a[href^="#"]')
 
-const menuItems = document.querySelectorAll('.menu a')
-menuItems.forEach((item) => {
-  item.classList.add('ativo')
+links.forEach((link) => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault()
+    links.forEach((link) => {
+      link.classList.remove('ativo')
+    })
+    e.currentTarget.classList.add('ativo')
+  })
 })
 
+// Selecione todos os elementos do site começando a partir do body,
+// ao clique mostre exatamente quais elementos estão sendo clicados
+// const elementos = document.querySelectorAll('body *')
+// elementos.forEach((elemento) => {
+//   elemento.addEventListener('click', (e) => {
+//     elemento.remove()
+//   })
+// })
 
-// Remove a classe ativo de todos os itens do menu e mantenha apenas no primeiro
-menuItems.forEach((item, index) => {
-  if(index !== 0) {
-    item.classList.remove('ativo')
-  } 
+
+// Utilizando o código anterior, ao invés de mostrar no console,
+// remova o elemento que está sendo clicado, o método remove() remove um elemento
+
+// Se o usuário clicar na tecla (t), aumente todo o texto do site. 
+
+document.addEventListener('keypress', (e) => {
+  const paragrafo = document.querySelectorAll('p')
+  if(e.key === 't') {
+    paragrafo.forEach((p) => {
+      p.style.fontSize = '24px'
+    })
+  }
 })
-
-// Verifique se as imagens possuem o atributo alt
-const imagens = document.querySelectorAll('img')
-
-imagens.forEach((imagem) => {
-  console.log(imagem.hasAttribute('alt'))
-})
-
-// Modifique o href do link externo no menu
-
-const linkExterno = document.querySelector('[href^="https://www.or"]')
-linkExterno.setAttribute('href', 'http://www.google.com')
-console.log(linkExterno)
