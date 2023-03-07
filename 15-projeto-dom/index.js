@@ -1,73 +1,70 @@
-// // Verifique a distância da primeira imagem
-// // em relação ao topo da página
-// const primeiraImg = document.querySelector('img')
-// console.log(primeiraImg.offsetTop)
+function initTabNav() {
+  const tabMenu = document.querySelectorAll('.js-tabmenu li')
+  const tabContent = document.querySelectorAll('.js-tabcontent section')
+  tabContent[0].classList.add('ativo')
 
-// // Retorne a soma da largura de todas as imagens
-// const imagens = document.querySelectorAll('img')
-// let soma = 0
+  if(tabMenu.length && tabContent.length) {
+    function activeTab(index) {
+      tabContent.forEach((section) => {
+        section.classList.remove('ativo')
+      })
+      tabContent[index].classList.add('ativo')
+    }
 
-// imagens.forEach((img) => {
-//   img.getBoundingClientRect
-//   soma = soma + img.width
-// })
-
-// console.log(soma)
-
-// // Verifique se os links da página possuem
-// // o mínimo recomendado para telas utilizadas
-// // com o dedo. (48px/48px de acordo com o google)
-
-// // Se o browser for menor que 720px,
-// // adicione a classe menu-mobile ao menu
-// const menuMobile = document.querySelector('.menu')
-// const small = window.matchMedia('(max-width: 720px)')
-// console.log(small)
-
-// if (small.matches) {
-//   menuMobile.classList.add('menu-mobile')
-// } else {
-//   menuMobile.classList.remove('menu-mobile')
-// }
-
-
-// Quando o usuário clicar nos links internos do site,
-// adicione a classe ativo ao item clicado e remova dos
-// demais itens caso eles possuam a mesma. Previna
-// o comportamento padrão desses links
-
-const links = document.querySelectorAll('a[href^="#"]')
-
-links.forEach((link) => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault()
-    links.forEach((link) => {
-      link.classList.remove('ativo')
-    })
-    e.currentTarget.classList.add('ativo')
-  })
-})
-
-// Selecione todos os elementos do site começando a partir do body,
-// ao clique mostre exatamente quais elementos estão sendo clicados
-// const elementos = document.querySelectorAll('body *')
-// elementos.forEach((elemento) => {
-//   elemento.addEventListener('click', (e) => {
-//     elemento.remove()
-//   })
-// })
-
-
-// Utilizando o código anterior, ao invés de mostrar no console,
-// remova o elemento que está sendo clicado, o método remove() remove um elemento
-
-// Se o usuário clicar na tecla (t), aumente todo o texto do site. 
-
-document.addEventListener('keypress', (e) => {
-  const paragrafo = document.querySelectorAll('p')
-  if(e.key === 't') {
-    paragrafo.forEach((p) => {
-      p.style.fontSize = '24px'
+    tabMenu.forEach((itemMenu, index) => {
+      itemMenu.addEventListener('click', () => {
+        activeTab(index)
+      })
     })
   }
-})
+}
+initTabNav()
+
+
+function initAccordion() {
+  const accordionList = document.querySelectorAll('.js-accordion dt')
+
+  if(accordionList.length) {
+    function activeAccordion() {
+      this.classList.toggle('ativo')
+      this.nextElementSibling.classList.toggle('ativo')
+    }
+
+    accordionList.forEach((item) => {
+      item.addEventListener('click', activeAccordion)
+    })
+  }
+}
+initAccordion()
+
+function initScrollSuave() {
+  const linksInternos = document.querySelectorAll('.js-menu a[href^="#"]')
+
+  linksInternos.forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault()
+      const href = e.currentTarget.getAttribute('href')
+      const section = document.querySelector(href)
+      const topo = section.offsetTop
+
+      window.scrollTo({
+        top: topo,
+        behavior: "smooth"
+      })
+    })
+  })
+}
+initScrollSuave()
+
+const sections = document.querySelectorAll('.js-scroll')
+
+function animaScroll() {
+  sections.forEach((section) => {
+    const sectionTop = section.getBoundingClientRect().top
+    if(sectionTop < 0) {
+      section.classList.add('ativo')
+    }
+  })
+}
+
+window.addEventListener('scroll', animaScroll)
